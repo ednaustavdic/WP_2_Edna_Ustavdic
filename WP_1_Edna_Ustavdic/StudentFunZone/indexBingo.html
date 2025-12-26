@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/styleBingo.css" type="text/css">
+		<title>Bingo</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+	</head>
+	<body>
+	<div class="content" id="contentToConvert">
+		<div class="bingo-wrapper">
+			<h1>BINGO</h1>
+
+			<div class="bingo-controls">
+				<button id="randomizeBtn">Randomiziraj ploču</button>
+				<button id="resetMarksBtn">Resetiraj oznake</button>
+				<div class="wins-counter">Pobjede: <span id="winsCount">0</span></div>
+			</div>
+
+			<table class="bingo-grid" id="bingoTable"></table>
+
+			<p>Skupi 5 brojeva zaredom - BINGO!</p>
+
+
+			<div class="bingo-actions" style="margin-bottom:18px;">
+				<button onclick="generatePDF()" class="action-btn">Sačuvaj kao PDF</button>
+				<button id="mailtoBingoBtn" class="action-btn">Pošalji na email</button>
+			</div>
+
+			
+					<div class="modal-overlay" id="winnerModal" style="display:none;">
+						<div class="modal-box">
+							<h2>Pobjednik</h2>
+							<p>Victory :D</p>
+							<button id="closeModal">Zatvori</button>
+							<button id="newRound">Restart</button>
+						</div>
+					</div>
+		</div>
+	</div>
+
+	<script>
+		function generatePDF() {
+			const element = document.getElementById('contentToConvert');
+			const options = {
+				margin: 1,
+				filename: 'Bingo.pdf',
+				image: { type: 'jpeg', quality: 0.98 },
+				html2canvas: { scale: 2 },
+				jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+			};
+			html2pdf().set(options).from(element).save();
+		}
+	</script>
+	<script>
+	document.getElementById('mailtoBingoBtn').onclick = function() {
+		let resultText = '';
+		const wins = document.getElementById('winsCount')?.innerText || '';
+		resultText = `Bingo rezultat: Pobjede: ${wins}`;
+		window.location.href = `mailto:?subject=Bingo rezultat&body=${encodeURIComponent(resultText)}`;
+	};
+	</script>
+
+	
+	<script src="../js/BingoJS.js"></script>
+	</body>
+	</html>

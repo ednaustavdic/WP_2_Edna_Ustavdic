@@ -1,0 +1,41 @@
+
+.quiz-actions {
+	display: flex;
+	gap: 14px;
+	justify-content: flex-end;
+	margin-bottom: 18px;
+}
+.kviz-btn {
+	background: linear-gradient(135deg,#7ad0ff 0%, #2c5364 100%);
+	color: #fff;
+	border: none;
+	padding: 10px 22px;
+	border-radius: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	box-shadow: 0 2px 8px rgba(122,208,255,0.13);
+	cursor: pointer;
+	transition: background 0.2s, box-shadow 0.2s;
+}
+.kviz-btn:hover {
+	background: linear-gradient(135deg,#2c5364 0%, #7ad0ff 100%);
+	box-shadow: 0 4px 16px rgba(122,208,255,0.18);
+}
+:root{--bg1:#0f2027;--bg2:#2c5364;--card:#ffffffee;--accent:#7ad0ff;--muted:#e6f3fb}
+*{box-sizing:border-box}
+body{font-family: 'Segoe UI', Tahoma, sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--muted);margin:0;padding:24px;display:flex;flex-direction:column;align-items:center}
+h1{text-align:center;margin:6px 0 12px 0;color:var(--muted)}
+p{max-width:880px;text-align:center;color:rgba(230,243,251,0.9)}
+.quiz-app{width:920px;max-width:96vw}
+.quiz-header{display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-bottom:14px}
+.start-btn{background:linear-gradient(180deg,var(--accent),#59c8ff);color:#042b31;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+.start-btn:disabled{opacity:.6}
+.kviz-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.25);color:#022;}
+.kviz-options{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.kviz-option{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px;background:linear-gradient(180deg,#ffffff,#fbfdff)}
+.quiz-footer{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.nav-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer}
+.submit-btn{background:linear-gradient(180deg,#6be48a,#4fc36a);border:none;padding:10px 14px;border-radius:8px;color:#052}
+.quiz-result{margin-top:16px;color:var(--muted)}
+
+@media(max-width:720px){.quiz-app{width:100%}.quiz-header{justify-content:space-between}}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleWhiteboard.css">
+    <title>Interaktivni Whiteboard</title>
+</head>
+<body>
+    <h1> Interaktivni Whiteboard</h1>   
+     <div class="toolbar">
+        <div class="tool-group">
+            <label for="toolSelect">Alat:</label>
+            <select id="toolSelect">
+                <option value="pencil">Piši</option>
+                <option value="marker">Marker</option>
+                <option value="spray">Spray</option>
+                <option value="eraser">Briši</option>
+                <option value="bucket">Kanta</option>
+            </select>
+        </div>
+
+        <div class="tool-group">
+            <label for="colorPicker">Boja:</label>
+            <input type="color" id="colorPicker" value="#000000">
+        </div>
+
+        <div class="tool-group">
+            <label for="brushSize">Veličina:</label>
+            <input type="range" id="brushSize" min="1" max="60" value="6">
+        </div>
+
+        <div class="tool-group">
+            <label for="imageSelect">Bojanka:</label>
+            <select id="imageSelect">
+                <option value="">-- izaberi --</option>
+                <option value="../slike/coloring1.png">Dinosaurus</option>
+                <option value="../slike/coloring2.png">Sonic</option>
+                <option value="../slike/coloring3.png">Maca</option>
+            </select>
+            <input type="file" id="imageUpload" accept="image/png, image/*" />
+        </div>
+
+        <div class="tool-group buttons">
+            <button id="undoBtn">Undo</button>
+            <button id="clearBtn">Čista ploča</button>
+            <button id="saveBtn">Snimi</button>
+            <button id="savePdfBtn">Snimi kao PDF</button>
+            <button id="sendEmailBtn">Pošalji mailom</button>
+        </div>
+    </div>
+
+
+   
+    <div class="canvas-wrap">
+        <canvas id="bgColor" width="900" height="500"></canvas>
+        <canvas id="imageLayer" width="900" height="500"></canvas>
+        <canvas id="board" width="900" height="500"></canvas>
+    </div>
+
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <h3>Pošalji mailom</h3>
+            <input type="email" id="emailInput" placeholder="Unesite vašu email adresu..." />
+            <div class="modal-buttons">
+                <button id="emailSendBtn">Pošalji</button>
+                <button id="emailCancelBtn">Poništi</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+       &copy; Web programiranje 2025 Internacionalna poslovno-informaciona akademija Tuzla    
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../js/WhiteBoardJS.js"></script>
+</body>
+</html>
+

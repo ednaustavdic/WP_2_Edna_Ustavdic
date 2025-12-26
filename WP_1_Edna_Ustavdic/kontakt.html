@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="utf-8">
+    <title>Kursevi IPI - Kontakt</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/styleKontakt.css" type="text/css" />
+    <link rel="icon" href="favicon.ico" />
+    <script>
+        function validateForm(event) {
+            
+            let ime = document.getElementById("ime").value.trim();
+            let prezime = document.getElementById("prezime").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let telefon = document.getElementById("telefon").value.trim();
+            let pristanak = document.getElementById("pristanak").checked;
+
+            let imePrezimeRegex = /^[A-Za-zčćšđžČĆŠĐŽ ]+$/;
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let telefonRegex = /^[0-9]{9,12}$/;
+
+            if (!imePrezimeRegex.test(ime)) {
+                alert("Ime može sadržavati samo slova.");
+                return false;
+            }
+            if (!imePrezimeRegex.test(prezime)) {
+                alert("Prezime može sadržavati samo slova.");
+                return false;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Unesite ispravnu email adresu.");
+                return false;
+            }
+            if (!telefonRegex.test(telefon)) {
+                alert("Broj telefona mora imati između 9 i 12 cifara.");
+                return false;
+            }
+            if (!pristanak) {
+                alert("Morate prihvatiti uslove obrade podataka.");
+                return false;
+            }
+
+            alert("Forma uspješno poslana!");
+            document.getElementById("kontaktForm").reset();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="slike/logo-ipi.png" alt="Kursevi IPI">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">O kursevima</a></li>
+                <li><a href="popis.html">Popis kurseva</a></li>
+                <li><a href="raspored.html">Raspored kurseva</a></li>
+                    <li>
+                    <a href="StudentFunZone/StudentFunZone.html">Student Fun Zone</a>
+                    <ul>
+                        <li><a href="StudentFunZone/StudentFunZone.html?game=bingo">Bingo</a></li>
+                        <li><a href="StudentFunZone/StudentFunZone.html?game=kviz">Kviz</a></li>
+                        <li><a href="StudentFunZone/StudentFunZone.html?game=whiteboard">Interaktivni Whiteboard</a></li>
+                        <li><a href="StudentFunZone/StudentFunZone.html?game=visionboard">Vision Board</a></li>
+                        <li><a href="StudentFunZone/StudentFunZone.html?game=kanban">Kanban Board</a></li>
+                    </ul>
+                </li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <h2>Kontakt</h2>
+        <div class="kontakt-container">
+            <div class="kontakt-tekst">
+                <p>Do IPI-ja se može doći javnim gradskim prevozom ili taksijem.</p>
+                <p>Naša adresa je:</p>
+                <p>
+                    Sveučilišni računski centar<br>
+                    Kulina bana br. 2 (Skver)<br>
+                    Tuzla<br>
+                    75000<br>
+                    Bosna i Hercegovina<br>
+                    <a href="mailto:info@ipi-akademija.ba">info@ipi-akademija.ba</a>
+                </p>
+                <img src="slike/srce.jpg" alt="Srce" style="float:left; margin:84px 18px 10px 0; border-radius:10px; box-shadow:0 2px 10px rgba(102,126,234,0.13);">
+            </div>
+
+            <div class="kontakt-forma">
+                <h3>Pošaljite nam poruku</h3>
+                <form id="kontaktForm" action="kontakt.php" method="post">
+    <fieldset>
+        <legend>Kontakt forma</legend>
+
+        <label for="ime">Ime:</label>
+        <input type="text" id="ime" name="ime" required>
+
+        <label for="prezime">Prezime:</label>
+        <input type="text" id="prezime" name="prezime" required>
+
+        <label for="email">Email adresa:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="telefon">Broj telefona:</label>
+        <input type="tel" id="telefon" name="telefon" required>
+
+        <label for="poruka">Poruka:</label>
+        <textarea id="poruka" name="poruka" rows="6" placeholder="Vaša poruka..."></textarea>
+
+        <div class="consent">
+            <input type="checkbox" id="pristanak" name="pristanak" required>
+            <label for="pristanak" class="consent-label">Prihvatam uslove i saglasan/na sam sa obradom ličnih podataka.</label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Pošalji</button>
+        </div>
+    </fieldset>
+</form>
+
+            </div>
+        </div>
+        
+    </article>
+
+    <footer>
+        &copy; Internacionalna poslovno-informaciona akademija Tuzla
+    </footer>
+</body>
+</html>

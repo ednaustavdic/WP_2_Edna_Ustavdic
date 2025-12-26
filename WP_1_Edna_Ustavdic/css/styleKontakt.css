@@ -1,0 +1,118 @@
+/* Opšti stilovi */
+html {
+    background: #7b7775;
+}
+
+body {
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #484645;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+a, a:hover, a:visited, a:active {
+    color: #c30f10;
+    font-weight: bold; /* ispravljeno */
+}
+
+/* Naslovi */
+h2, h3 {
+    color: #c30f10;
+}
+
+/* Glavni sadržaj */
+article {
+    padding: 20px 40px;
+    box-sizing: border-box;
+    border-bottom: 2px solid #c00000;
+    min-height: 600px;
+    text-align: left;
+}
+.kontakt-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.kontakt-tekst {
+    flex: 1 1 45%;
+}
+
+.kontakt-tekst img {
+    display: block;
+    margin-top: 15px;
+    max-width: 100%;
+    height: auto;
+}
+
+.kontakt-forma {
+    flex: 1 1 45%;
+    max-width: 500px;
+}
+
+/* Forma */
+fieldset {
+    width: 100%;
+    margin: 0 auto 20px auto;
+    background-color: #f0f0f0;
+    border: 2px solid #c30f10;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+label {
+    display: block; /* label iznad inputa */
+    margin-top: 10px;
+    margin-bottom: 4px;
+    text-align: left;
+    width: 100%;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea {
+    box-sizing: border-box;
+    width: 100%; 
+    margin-bottom: 10px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+input[type=checkbox] {
+    margin-left: 0; /* uklonjen prazan prostor */
+}
+
+button {
+    display: block;
+    margin: 15px auto 0 auto;
+    background-color: #c30f10;
+    color:white;
+    font-weight:bold;
+    border:none;
+    padding:10px 30px;
+    border-radius:5px;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #a50d0e;
+    opacity: 0.5;
+}
+
+/* Footer */
+footer {
+    padding-top: 15px;
+    min-height: 30px;
+    background: #7b7775;
+    color: white;
+    text-align: center;
+}
