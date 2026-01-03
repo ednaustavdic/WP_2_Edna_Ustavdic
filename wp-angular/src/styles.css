@@ -370,3 +370,28 @@ button:hover {
 button:active {
     transform: translateY(0);
 }
+.simple-header {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-header {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.logo {
+  height: 60px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #6a7bd1, #7f5fd6);
+}
+

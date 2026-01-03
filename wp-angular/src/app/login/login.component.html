@@ -1,16 +1,15 @@
-<h2>Login</h2>
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Login</h2>
 
-<input type="text" [(ngModel)]="username" placeholder="Username">
-<br>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
 
-<input type="password" [(ngModel)]="password" placeholder="Password">
-<br>
+    <button (click)="login()">Login</button>
 
-<select [(ngModel)]="role">
-  <option value="">Odaberi</option>
-  <option value="student">Student</option>
-  <option value="admin">Admin</option>
-</select>
-<br><br>
-
-<button (click)="login()">Login</button>
+    <p class="register-link">
+      Nemas racun?
+      <a routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>
