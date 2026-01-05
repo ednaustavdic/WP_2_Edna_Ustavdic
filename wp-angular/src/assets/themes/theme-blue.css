@@ -1,0 +1,41 @@
+:root {
+  --bg-color: #e0f7fa;
+  --text-color: #004d40;
+  --card-bg: #b2ebf2;
+  --button-bg: #00796b;
+  --button-text: #fff;
+  --input-bg: #e0f7fa;
+  --input-text: #004d40;
+  --header-bg: #006064;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: var(--header-bg);
+  color: var(--button-text);
+  padding: 10px 20px;
+}
+
+.login-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.login-card input,
+.login-card select {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid #004d40;
+}
+
+.login-card button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+}

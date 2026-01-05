@@ -2,10 +2,11 @@
   <div class="login-card">
     <h2>Login</h2>
 
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email">
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
 
-    <button (click)="login()">Login</button>
+    <button (click)="onLogin()">Login</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
 
     <p class="register-link">
       Nemas racun?

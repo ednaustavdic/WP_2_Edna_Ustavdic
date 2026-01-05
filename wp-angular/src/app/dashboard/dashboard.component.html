@@ -1,8 +1,10 @@
-<nav class="navbar">
-  <a routerLink="/dashboard/profile">View Profile</a>
-  <a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a>
-  <a routerLink="/dashboard/trackers">My Trackers</a>
-  <a routerLink="/login">Logout</a>
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a (click)="logout()">Logout</a></li>
+  </ul>
 </nav>
 
 <div class="content">

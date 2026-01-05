@@ -26,14 +26,6 @@
   padding: 14px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.login-card input:focus,
-.login-card select:focus {
-  outline: none;
-  border-color: #6a7bd1;
 }
 
 .login-card button {
@@ -45,22 +37,12 @@
   cursor: pointer;
 }
 
-.register-link {
-  text-align: center;
-  font-size: 14px;
+.form-group {
+  margin-bottom: 8px;
 }
 
-.login-header {
-  text-align: center;
-  background: white;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  width: 80%;
-}
-
-.logo {
-  height: 60px;
-  display: block;
-  margin: 0 auto;
+.error {
+  color: #b00020;
+  font-size: 13px;
+  margin-top: 6px;
 }

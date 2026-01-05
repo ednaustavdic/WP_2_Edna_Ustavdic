@@ -1,0 +1,23 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a routerLink="/login">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="water-tracker-wrapper">
+  <h2 class="water-header">💧 Water Tracker</h2>
+  <div class="water-card">
+    <div class="water-info">Unesi broj čaša vode:</div>
+    <div class="water-input-row">
+      <button class="water-btn" (click)="addWater()">+1</button>
+      <span class="water-count">{{ waterCount }}</span>
+    </div>
+    <button class="save-btn" (click)="saveWater()" [class.saved]="saved">Sačuvaj</button>
+    <div class="water-progress" *ngIf="saved">
+      <span class="progress-text">Popio/la si {{ waterCount }} čaša danas</span>
+    </div>
+  </div>
+</div>

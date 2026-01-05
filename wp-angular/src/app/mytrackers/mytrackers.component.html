@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a routerLink="/login">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="trackers-wrapper">
+  <div class="tracker-card" *ngFor="let tracker of trackers" [routerLink]="tracker.route">
+    <div class="tracker-icon">{{ tracker.icon }}</div>
+    <div class="tracker-title">{{ tracker.title }}</div>
+  </div>
+</div>
