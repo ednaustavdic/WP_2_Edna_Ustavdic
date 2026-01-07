@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { RouterOutlet, RouterLink, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     const theme = localStorage.getItem('theme');
@@ -19,7 +20,9 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('loggedIn');
-    this.router.navigate(['/']);
+    this.authService.logout().finally(() => {
+      localStorage.removeItem('loggedIn');
+      this.router.navigate(['/login']);
+    });
   }
 }

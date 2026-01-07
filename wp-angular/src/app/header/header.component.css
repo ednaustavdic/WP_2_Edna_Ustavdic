@@ -2,17 +2,41 @@
 .main-header {
   width: 85%;
   margin: 10px auto 0;
-  background: white;
+  background: var(--card-bg);
   padding: 18px 24px;
   border-radius: 12px 12px 0 0;
   box-shadow: 0 10px 40px rgba(0,0,0,0.12);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 
 .logo {
-  height: 60px;
+  height: 48px;
+  display: block;
+}
+
+
+.theme-controls {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.theme-btn {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(33,50,120,0.12);
 }
 
 
@@ -27,7 +51,7 @@
   margin: 0;
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary);
   padding: 8px 24px;
   border-radius: 0 0 12px 12px;
   width: 100%;
@@ -37,7 +61,7 @@
 .main-nav li { margin-right: 18px; }
 
 .main-nav a {
-  color: white;
+  color: var(--primary-contrast);
   text-transform: uppercase;
   font-weight: 600;
   padding: 8px 10px;

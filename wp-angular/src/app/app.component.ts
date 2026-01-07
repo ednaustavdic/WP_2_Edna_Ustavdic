@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
     const link = document.createElement('link');
     link.id = 'theme-style';
     link.rel = 'stylesheet';
-    link.href = `assets/themes/${theme}.css`;
+    const fileTheme = theme === 'surprise' ? 'light' : theme;
+    link.href = `assets/themes/theme-${fileTheme}.css`;
     document.head.appendChild(link);
   }
 }

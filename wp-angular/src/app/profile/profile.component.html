@@ -1,0 +1,78 @@
+<div class="profile-wrapper">
+  <h2 class="profile-header">👤 Profil</h2>
+
+  <div style="margin:8px 0">
+    <button (click)="saveAsPdf()">Snimi statistiku kao PDF</button>
+  </div>
+
+  <div *ngIf="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="!loading">
+
+    <div class="sections">
+
+    <div class="profile-section">
+      <h3>Voda</h3>
+      <div *ngIf="waterWeek?.days && waterWeek.days.length">
+        <div *ngFor="let d of waterWeek.days; let i = index">
+          Dan {{ i + 1 }}: {{ d?.count || 0 }} čaša
+        </div>
+        <div style="margin-top:6px; font-weight:600">Ukupno: {{ totalByProp(waterWeek?.days, 'count') }} čaša</div>
+      </div>
+      <div *ngIf="!waterWeek?.days || waterWeek.days.length === 0">
+        Nema podataka za ovu sedmicu.
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>San</h3>
+      <div *ngIf="sleepWeek?.days && sleepWeek.days.length">
+        <div *ngFor="let d of sleepWeek.days; let i = index">
+          Dan {{ i + 1 }}: {{ d?.hours || 0 }}h, Kvalitet: {{ d?.quality || 0 }}
+        </div>
+        <div style="margin-top:6px; font-weight:600">Ukupno sati: {{ totalByProp(sleepWeek?.days, 'hours') }}h</div>
+      </div>
+      <div *ngIf="!sleepWeek?.days || sleepWeek.days.length === 0">
+        Nema podataka za ovu sedmicu.
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Obroci</h3>
+      <div *ngIf="mealWeek?.days && mealWeek.days.length">
+        <div *ngFor="let d of mealWeek.days; let i = index">Dan {{ i+1 }}: {{ d?.count || 0 }} obroka</div>
+        <div style="margin-top:6px; font-weight:600">Ukupno: {{ totalCount(mealWeek?.days) }} obroka</div>
+      </div>
+      <div *ngIf="!mealWeek?.days || mealWeek.days.length === 0">Nema podataka za ovu sedmicu.</div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Vrijeme pred ekranom</h3>
+      <div *ngIf="screentimeWeek?.days && screentimeWeek.days.length">
+        <div *ngFor="let d of screentimeWeek.days; let i = index">Dan {{ i+1 }}: {{ (d?.hours || 0) * 60 }} min</div>
+        <div style="margin-top:6px; font-weight:600">Ukupno: {{ totalMinutes(screentimeWeek?.days) }} min</div>
+      </div>
+      <div *ngIf="!screentimeWeek?.days || screentimeWeek.days.length === 0">Nema podataka za ovu sedmicu.</div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Navike</h3>
+      <div *ngIf="habitWeek?.days && habitWeek.days.length">
+        <div *ngFor="let d of habitWeek.days; let i = index">Dan {{ i+1 }}: {{ (d?.done || d?.completed) ? 'Da' : 'Ne' }}</div>
+      </div>
+      <div *ngIf="!habitWeek?.days || habitWeek.days.length === 0">Nema podataka za ovu sedmicu.</div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Učenje</h3>
+      <div *ngIf="studyWeek?.days && studyWeek.days.length">
+        <div *ngFor="let d of studyWeek.days; let i = index">Dan {{ i+1 }}: {{ (d?.hours || 0) * 60 }} min</div>
+        <div style="margin-top:6px; font-weight:600">Ukupno: {{ totalMinutes(studyWeek?.days) }} min</div>
+      </div>
+      <div *ngIf="!studyWeek?.days || studyWeek.days.length === 0">Nema podataka za ovu sedmicu.</div>
+    </div>
+
+  </div>
+</div>

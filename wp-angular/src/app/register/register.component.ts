@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent {
 
   constructor(
     private router: Router,
-    private auth: Auth
+    private auth: Auth,
+    private themeService: ThemeService
   ) {}
 
   onRegister() {
@@ -31,9 +33,22 @@ export class RegisterComponent {
     if (!this.isFormValid()) return;
 
     createUserWithEmailAndPassword(this.auth, this.email, this.password)
-      .then(() => {
-        localStorage.setItem('theme', 'theme-' + this.selectedTheme);
-        this.applyTheme(this.selectedTheme);
+      .then(async () => {
+        try {
+          if (this.selectedTheme === 'surprise') {
+            const color = this.themeService.randomColor();
+            this.themeService.applyTheme('surprise', color);
+            await this.themeService.setThemeForUser('surprise');
+            await this.themeService.setPrimaryColorForUser(color);
+          } else {
+            const existingColor = localStorage.getItem('primaryColor') || undefined;
+            this.themeService.applyTheme(this.selectedTheme, existingColor);
+            await this.themeService.setThemeForUser(this.selectedTheme);
+            if (existingColor) await this.themeService.setPrimaryColorForUser(existingColor);
+          }
+        } catch (e) {
+        }
+        localStorage.setItem('loggedIn', '1');
         this.router.navigate(['/dashboard']);
       })
       .catch((err) => {
@@ -43,14 +58,20 @@ export class RegisterComponent {
 
   onThemeChange(theme: string) {
     this.selectedTheme = theme;
-    this.applyTheme(theme);
-    localStorage.setItem('theme', 'theme-' + theme);
+    if (theme === 'surprise') {
+      this.themeService.surpriseMe();
+    } else {
+      this.applyTheme(theme);
+      this.themeService.applyTheme(theme, localStorage.getItem('primaryColor') || undefined);
+    }
+    localStorage.setItem('theme', theme);
   }
 
   private applyTheme(theme: string) {
     const link = document.getElementById('theme-style') as HTMLLinkElement | null;
     if (link) {
-      link.href = `assets/themes/theme-${theme}.css`;
+      const fileTheme = theme === 'surprise' ? 'light' : theme;
+      link.href = `assets/themes/theme-${fileTheme}.css`;
     }
   }
 

@@ -1,0 +1,33 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a href="#" (click)="logout($event)">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="meal-wrapper">
+  <div class="tracker-card">
+    <div class="tracker-header">
+      <h2>🍽️ Meal Tracker</h2>
+      <div style="margin-left:16px; display:flex; gap:8px; align-items:center;">
+        <button (click)="edit = !edit">{{ edit ? 'Lock' : 'Edit' }}</button>
+        <button (click)="saveWeek()">Save</button>
+        <button (click)="deleteWeek()">Delete</button>
+      </div>
+    </div>
+
+    <div class="days-grid">
+      <div class="day-card" *ngFor="let d of days; let i = index">
+        <div class="day-name">Dan {{ i + 1 }}</div>
+        <input type="number" [value]="d?.count ?? 0" (input)="setCount(i, $any($event.target).valueAsNumber)" min="0" [disabled]="!edit" />
+        <div class="day-actions">
+          <a href="#" class="reset-link" (click)="deleteDay(i); $event.preventDefault()" [class.disabled]="!edit" aria-label="Reset day">Reset</a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="saved" class="saved-note">Saved.</div>
+  </div>
+</div>

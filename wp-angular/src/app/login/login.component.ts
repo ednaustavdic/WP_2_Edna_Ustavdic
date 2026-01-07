@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,21 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private auth: Auth
+    private authService: AuthService
   ) {}
 
+  ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        this.router.navigate(['/dashboard']);
+      }
+    });
+  }
+
   onLogin() {
-    signInWithEmailAndPassword(this.auth, this.email, this.password)
+    this.authService.login(this.email, this.password)
       .then(() => {
+        localStorage.setItem('loggedIn', '1');
         this.router.navigate(['/dashboard']);
       })
       .catch(() => {

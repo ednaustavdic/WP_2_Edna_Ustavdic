@@ -1,0 +1,36 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a href="#" (click)="logout($event)">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="sleep-tracker-wrapper sleep-wrapper">
+  <h2 class="sleep-header">🛌 Sleep Tracker</h2>
+
+  
+    <div class="tracker-actions">
+        <button (click)="edit = !edit">{{ edit ? 'Lock' : 'Edit' }}</button>
+        <button (click)="saveWeek()">Save</button>
+        <button (click)="deleteWeek()">Delete</button>
+      </div>
+
+  <div class="days-grid">
+    <div class="day-card" *ngFor="let d of sleepData; let i = index">
+      <div class="day-name">{{ days[i] }}</div>
+      <label>Hours: <input type="number" [value]="d?.hours ?? 0" (input)="setHours(i, $any($event.target).valueAsNumber)" min="0" [disabled]="!edit" /></label>
+      <label>Quality: <input type="number" [value]="d?.quality ?? 0" (input)="setQuality(i, $any($event.target).valueAsNumber)" min="0" max="10" [disabled]="!edit" /></label>
+
+        <div class="day-actions">
+          <a href="#" class="reset-link" (click)="deleteDay(i); $event.preventDefault()" [class.disabled]="!edit" aria-label="Reset day">Reset</a>
+        </div>
+
+      <div class="quality-icons">
+        <span *ngFor="let q of [1,2,3,4,5]" (click)="setQuality(i, q)" [class.selected]="sleepData[i].quality === q" class="quality-icon">😴</span>
+      </div>
+    </div>
+  </div>
+
+</div>

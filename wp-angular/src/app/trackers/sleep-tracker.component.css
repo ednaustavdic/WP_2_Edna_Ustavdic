@@ -1,0 +1,49 @@
+@import './trackers-common.css';
+
+.sleep-wrapper .day-card label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin: 8px 0;
+}
+
+.sleep-wrapper .day-card input[type="number"] {
+	min-width: 68px;
+	padding: 6px 8px;
+	border-radius: 8px;
+	border: 1px solid rgba(39,50,70,0.08);
+}
+
+.sleep-wrapper .day-actions {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	margin-top: 12px;
+}
+
+.sleep-wrapper .day-actions .reset-link {
+	padding: 6px 10px;
+	background: transparent;
+	border-radius: 6px;
+	text-decoration: none;
+	color: #5b6dd1;
+}
+
+.sleep-wrapper .tracker-actions {
+	margin-left: 16px;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.sleep-wrapper .tracker-actions button {
+	padding: 12px 20px;
+	border-radius: 8px;
+	border: none;
+	background: #a52850;
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: 0.6px;
+}
