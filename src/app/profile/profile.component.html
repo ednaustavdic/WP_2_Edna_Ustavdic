@@ -1,0 +1,126 @@
+<div class="profile-wrapper">
+  <h2 class="profile-header">Statistika Mjeseca</h2>
+
+  <div class="pdf-button-wrapper">
+    <button (click)="saveAsPdf()">Preuzmi kao PDF</button>
+  </div>
+
+  <div *ngIf="loading" class="loading-wrapper">
+    Učitavanje statistike...
+  </div>
+
+  <div *ngIf="!loading" class="sections">
+
+    <div class="profile-section">
+      <h3>Voda</h3>
+      <div *ngIf="waterMonth?.days && waterMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of waterMonth.days; let i = index">
+            <div *ngIf="d?.count" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ d?.count }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Ukupno: {{ totalByProp(waterMonth?.days, 'count') }} čaša</div>
+      </div>
+      <div *ngIf="!waterMonth?.days || waterMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>San</h3>
+      <div *ngIf="sleepMonth?.days && sleepMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of sleepMonth.days; let i = index">
+            <div *ngIf="d?.hours" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ d?.hours }}h</span>
+              <small>Q:{{ d?.quality || 0 }}</small>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Ukupno: {{ totalByProp(sleepMonth?.days, 'hours') }}h</div>
+      </div>
+      <div *ngIf="!sleepMonth?.days || sleepMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Obroci</h3>
+      <div *ngIf="mealMonth?.days && mealMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of mealMonth.days; let i = index">
+            <div *ngIf="d?.count" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ d?.count }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Ukupno: {{ totalCount(mealMonth?.days) }} obroka</div>
+      </div>
+      <div *ngIf="!mealMonth?.days || mealMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Ekran</h3>
+      <div *ngIf="screentimeMonth?.days && screentimeMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of screentimeMonth.days; let i = index">
+            <div *ngIf="d?.hours" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ (d?.hours || 0) * 60 }}</span>
+              <small>min</small>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Ukupno: {{ totalMinutes(screentimeMonth?.days) }} min</div>
+      </div>
+      <div *ngIf="!screentimeMonth?.days || screentimeMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Navike</h3>
+      <div *ngIf="habitMonth?.days && habitMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of habitMonth.days; let i = index">
+            <div *ngIf="d?.completed" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ (d?.done || d?.completed) ? 'DA' : 'NE' }}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Odrađeno: {{ totalDone(habitMonth?.days) }} dana</div>
+      </div>
+      <div *ngIf="!habitMonth?.days || habitMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Učenje</h3>
+      <div *ngIf="studyMonth?.days && studyMonth.days.length">
+        <div class="data-grid">
+          <ng-container *ngFor="let d of studyMonth.days; let i = index">
+            <div *ngIf="d?.hours" class="data-item">
+              <strong>D{{ i + 1 }}</strong>
+              <span>{{ (d?.hours || 0) * 60 }}</span>
+              <small>min</small>
+            </div>
+          </ng-container>
+        </div>
+        <div class="total-stat">Ukupno: {{ totalMinutes(studyMonth?.days) }} min</div>
+      </div>
+      <div *ngIf="!studyMonth?.days || studyMonth.days.length === 0" class="no-data">
+        Nema podataka za ovaj mjesec
+      </div>
+    </div>
+
+  </div>
+</div>

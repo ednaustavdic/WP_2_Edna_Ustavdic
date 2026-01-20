@@ -1,0 +1,63 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a href="#" (click)="logout($event)">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="screentime-wrapper">
+  <div class="tracker-card">
+    <div class="tracker-header">
+      <h2>Screen Time Tracker</h2>
+    </div>
+
+    <div class="tracker-actions">
+      <button (click)="edit = !edit">{{ edit ? 'Lock' : 'Edit' }}</button>
+      <button (click)="saveMonth()">Save</button>
+      <button (click)="deleteMonth()">Delete</button>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button (click)="prevMonth()">&lt;</button>
+        <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+        <button (click)="nextMonth()">&gt;</button>
+      </div>
+      <div class="calendar-weekdays">
+        <div *ngFor="let day of weekDays">{{ day }}</div>
+      </div>
+      <div class="calendar-grid">
+        <button
+          *ngFor="let day of calendarDays"
+          [class.selected]="day && selectedDate.getDate() === day"
+          [class.disabled]="day === null"
+          (click)="day && selectDate(day)"
+          [disabled]="day === null"
+        >
+          {{ day }}
+        </button>
+      </div>
+    </div>
+
+    <div class="tracker-input-container">
+      <div class="selected-date">
+        <p>Selected: <strong>{{ selectedDate | date: 'MMMM d, yyyy' }}</strong></p>
+      </div>
+      <div class="single-day-input">
+        <label>Hours:</label>
+        <input
+          type="number"
+          [value]="days[getSelectedDayIndex()]?.hours ?? 0"
+          (input)="setHours(getSelectedDayIndex(), $any($event.target).valueAsNumber)"
+          min="0"
+          [disabled]="!edit"
+          placeholder="0"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="saved" class="saved-note">Saved</div>
+  </div>
+</div>

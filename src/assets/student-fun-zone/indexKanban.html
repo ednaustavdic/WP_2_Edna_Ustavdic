@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Ploča</title>
+    <link rel="stylesheet" href="/assets/student-fun-zone/css/styleKanban.css">
+</head>
+<body>      
+    <h1>Kanban Ploča</h1>
+    <div class="buttons">
+        <button id="addTaskBtn">Dodaj zadatak</button>
+        <button id="saveBoardBtn">Snimi</button>
+        <button id="clearBoardBtn">Čisti ploču</button>
+        <button id="savePdfBtn">Snimi kao PDF</button>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <h3>Dodaj zadatak</h3>
+            <input type="text" id="taskInput" placeholder="Vaš zadatak..."/>
+            <div class="modal-buttons">
+                <button id="modalAdd">Dodaj</button>
+                <button id="modalCancel">Poništi</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="clearModal" class="modal">
+        <div class="modal-content">
+            <h3>Očisti cijelu ploču?</h3>
+            <div class="modal-buttons">
+                <button id="clearYes" style="background:#e74c3c;">Očisti</button>
+                <button id="clearNo">Poništi</button>
+            </div>
+        </div>
+    </div>
+
+
+            <div class="board">
+                <div class="column" data-status="todo">
+                    <h2>To Do</h2>
+                    <div class="taskList" ></div>
+                </div>
+
+                <div class="column" data-status="progress">
+                    <h2>In Progress</h2>
+                    <div class="taskList" ></div>
+                </div>
+
+                <div class="column" data-status="done">
+                    <h2>Done</h2>
+                    <div class="taskList" ></div>
+                </div>
+                </div>
+
+    <footer>
+        &copy; Web programiranje 2025 Internacionalna poslovno-informaciona akademija Tuzla    
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="/assets/student-fun-zone/js/KanbanJS.js"></script>     
+</body>
+</html>

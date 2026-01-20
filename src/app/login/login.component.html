@@ -1,0 +1,16 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Login</h2>
+
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email">
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+
+    <button (click)="onLogin()">Login</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <p class="register-link">
+      Nemas racun?
+      <a routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>

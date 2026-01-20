@@ -1,0 +1,8 @@
+:root {
+  --primary: #8b5cf6;
+  --primary-contrast: #ffffff;
+  --card-bg: #0f1720;
+  --bg: linear-gradient(180deg,#071026 0%, #081426 100%);
+  --text: #e6eef8;
+}
+

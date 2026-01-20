@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/student-fun-zone/css/styleKviz.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kviz</title>
+</head>
+<body>
+    <h1>Kviz</h1>
+    <p>Dobrodošli u kviz! Testirajte svoje znanje o HTML-u i CSS-u.</p>
+
+    <div id="quizApp" class="quiz-app">
+        <div class="quiz-actions" style="margin-bottom:18px;">
+            <button id="savePdfBtn" class="action-btn kviz-btn">Sačuvaj kao PDF</button>
+            <button id="mailtoBtn" class="action-btn kviz-btn">Pošalji na email</button>
+        </div>
+        <div class="quiz-header">
+            <button id="startBtn" class="start-btn">Pokreni kviz</button>
+            <select id="numQuestions" aria-label="Broj pitanja">
+                <option value="5">5 pitanja</option>
+                <option value="10" selected>10 pitanja</option>
+                <option value="20">20 pitanja</option>
+            </select>
+        </div>
+
+        <div id="quizContainer" class="quiz-container" aria-live="polite"></div>
+
+        <div id="quizFooter" class="quiz-footer" style="display:none">
+            <button id="prevBtn" class="nav-btn">Prethodno</button>
+            <button id="nextBtn" class="nav-btn">Sljedeće</button>
+            <button id="submitBtn" class="submit-btn">Predaj odgovore</button>
+        </div>
+
+        <div id="quizResult" class="quiz-result" style="display:none"></div>
+    </div>
+
+    <script src="/assets/student-fun-zone/js/KvizJS.js"></script>
+    <script>
+    document.getElementById('savePdfBtn').onclick = function() {
+        const element = document.getElementById('quizApp');
+        const options = { margin: 0.5, filename: 'Kviz.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+        html2pdf().set(options).from(element).save();
+    };
+    document.getElementById('mailtoBtn').onclick = function() {
+        let resultText = '';
+        const resultDiv = document.getElementById('quizResult');
+        if (resultDiv && resultDiv.style.display !== 'none') {
+            resultText = resultDiv.innerText;
+        } else {
+            resultText = 'Rezultati kviza će biti prikazani nakon predaje odgovora.';
+        }
+        const subject = encodeURIComponent('Kviz rezultat');
+        const body = encodeURIComponent(resultText);
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    };
+    </script>
+</body>
+</html>

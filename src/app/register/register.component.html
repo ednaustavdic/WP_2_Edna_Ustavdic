@@ -1,0 +1,31 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Registracija</h2>
+
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Ime" [(ngModel)]="name">
+      <div class="error" *ngIf="(!isNameValid() && (showErrors || name.length>0))">Ime je obavezno.</div>
+    </div>
+
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Email" [(ngModel)]="email">
+      <div class="error" *ngIf="(!isEmailValid() && (showErrors || email.length>0))">Unesite važeći email.</div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Password" [(ngModel)]="password">
+      <div class="error" *ngIf="(!isPasswordValid() && (showErrors || password.length>0))">Lozinka je obavezna.</div>
+    </div>
+
+    <div class="form-group">
+      <select name="theme" [(ngModel)]="selectedTheme" (ngModelChange)="onThemeChange($event)">
+        <option value="light">Svijetla tema</option>
+        <option value="dark">Tamna tema</option>
+        <option value="surprise">Iznenadi me</option>
+      </select>
+    </div>
+
+    <button (click)="onRegister()" [disabled]="!isFormValid()">Registruj se</button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </div>
+</div>

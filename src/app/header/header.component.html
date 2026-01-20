@@ -1,0 +1,19 @@
+<div class="main-header">
+  <a routerLink="/dashboard">
+    <img src="assets/logo_h.png" alt="Kursevi IPI" class="logo">
+  </a>
+  <div class="theme-controls">
+    <button class="theme-btn" (click)="toggleDark($event)" title="Toggle dark">🌓</button>
+  </div>
+</div>
+
+<nav class="main-nav" *ngIf="!isDashboard">
+  <ul>
+    <li><a href="#" (click)="goExternal('../../WP_1_Edna_Ustavdic/index.html', $event)">O kursevima</a></li>
+    <li><a href="#" (click)="goExternal('../../WP_1_Edna_Ustavdic/popis.html', $event)">Popis kurseva</a></li>
+    <li><a href="#" (click)="goExternal('../../WP_1_Edna_Ustavdic/raspored.html', $event)">Raspored kurseva</a></li>
+    <li><a href="#" (click)="goExternal('../../WP_1_Edna_Ustavdic/StudentFunZone/StudentFunZone.html', $event)">Student Fun Zone</a></li>
+    <li><a href="#" (click)="goExternal('../../WP_1_Edna_Ustavdic/kontakt.html', $event)">Kontakt</a></li>
+    <li class="right"><a href="#" (click)="goToLogin($event)">Login / Register</a></li>
+  </ul>
+</nav>

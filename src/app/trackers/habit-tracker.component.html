@@ -1,0 +1,73 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a href="#" (click)="logout($event)">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="habit-wrapper">
+  <div class="tracker-card">
+    <div class="tracker-header">
+      <h2>Habit Tracker</h2>
+    </div>
+
+    <div class="tracker-actions">
+      <button (click)="edit = !edit">{{ edit ? 'Lock' : 'Edit' }}</button>
+      <button (click)="saveMonth()">Save</button>
+      <button (click)="deleteMonth()">Delete</button>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button (click)="prevMonth()">&lt;</button>
+        <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+        <button (click)="nextMonth()">&gt;</button>
+      </div>
+      <div class="calendar-weekdays">
+        <div *ngFor="let day of weekDays">{{ day }}</div>
+      </div>
+      <div class="calendar-grid">
+        <button
+          *ngFor="let day of calendarDays"
+          [class.selected]="day && selectedDate.getDate() === day"
+          [class.disabled]="day === null"
+          (click)="day && selectDate(day)"
+          [disabled]="day === null"
+        >
+          {{ day }}
+        </button>
+      </div>
+    </div>
+
+    <div class="tracker-input-container">
+      <div class="selected-date">
+        <p>Selected: <strong>{{ selectedDate | date: 'MMMM d, yyyy' }}</strong></p>
+      </div>
+      <div class="habit-toggle-container">
+        <button
+          class="habit-btn habit-yes"
+          [class.active]="days[getSelectedDayIndex()]?.completed === 1"
+          (click)="setCompleted(getSelectedDayIndex(), 1)"
+          [disabled]="!edit"
+        >
+          YES
+        </button>
+        <button
+          class="habit-btn habit-no"
+          [class.active]="days[getSelectedDayIndex()]?.completed === 0"
+          (click)="setCompleted(getSelectedDayIndex(), 0)"
+          [disabled]="!edit"
+        >
+          NO
+        </button>
+      </div>
+      <div class="habit-stats">
+        <p>Total in month: <strong>{{ getTotalCompletions() }}/31</strong></p>
+      </div>
+    </div>
+
+    <div *ngIf="saved" class="saved-note">Saved</div>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+@import './trackers-common.css';
+
+.sleep-compact-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.sleep-day-compact {
+	background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+	padding: 12px;
+	border-radius: 10px;
+	border: 2px solid rgba(102, 126, 234, 0.1);
+	text-align: center;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sleep-day-compact:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+	border-color: rgba(102, 126, 234, 0.3);
+}
+
+.sleep-day-header {
+	font-weight: 700;
+	font-size: 13px;
+	color: #1a2544;
+	margin-bottom: 8px;
+	letter-spacing: 0.3px;
+}
+
+.sleep-input-group {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 8px;
+	justify-content: center;
+}
+
+.sleep-field {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	flex: 1;
+}
+
+.sleep-field label {
+	font-size: 11px;
+	font-weight: 700;
+	color: #667eea;
+	text-transform: uppercase;
+}
+
+.sleep-field input {
+	width: 40px;
+	padding: 4px 6px;
+	font-size: 12px;
+	border: 1.5px solid rgba(102, 126, 234, 0.3);
+	border-radius: 6px;
+	text-align: center;
+	font-weight: 600;
+	color: #1a2544;
+	transition: all 0.2s ease;
+}
+
+.sleep-field input:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.sleep-field input:disabled {
+	background-color: #f0f0f0;
+	opacity: 0.6;
+}
+
+.sleep-quality-selector {
+	display: flex;
+	gap: 3px;
+	justify-content: center;
+	margin-bottom: 8px;
+	flex-wrap: wrap;
+}
+
+.sleep-quality-emoji {
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	opacity: 0.3;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.sleep-quality-emoji:hover {
+	transform: scale(1.15);
+	opacity: 0.6;
+}
+
+.sleep-quality-emoji.selected {
+	opacity: 1;
+	transform: scale(1.2);
+	background: rgba(102, 126, 234, 0.2);
+	box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+.sleep-reset-btn {
+	width: 100%;
+	padding: 5px 8px;
+	font-size: 11px;
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+	background: #f0524f;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.sleep-reset-btn:hover {
+	background: #e63935;
+	transform: scale(1.02);
+}
+
+.sleep-wrapper .tracker-actions {
+	margin: 0 0 24px 0;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.sleep-wrapper .tracker-actions button {
+	padding: 12px 24px;
+	border-radius: 8px;
+	border: none;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: 0.6px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.sleep-wrapper .tracker-actions button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.sleep-wrapper .tracker-actions button:active {
+	transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+	.sleep-compact-grid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	.sleep-compact-grid {
+		grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+		gap: 8px;
+	}
+	
+	.sleep-day-compact {
+		padding: 10px;
+	}
+}

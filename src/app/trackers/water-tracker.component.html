@@ -1,0 +1,59 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard/profile">View Profile</a></li>
+    <li><a routerLink="/dashboard/student-fun-zone">Student Fun Zone</a></li>
+    <li><a routerLink="/mytrackers">My Trackers</a></li>
+    <li><a href="#" (click)="logout($event)">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="water-tracker-wrapper">
+  <h2 class="water-header">Water Tracker</h2>
+
+  <div class="tracker-actions">
+    <button (click)="edit = !edit">{{ edit ? 'Lock' : 'Edit' }}</button>
+    <button (click)="saveMonth()">Save</button>
+    <button (click)="deleteMonth()">Delete</button>
+  </div>
+
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button (click)="prevMonth()">&lt;</button>
+      <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+      <button (click)="nextMonth()">&gt;</button>
+    </div>
+    <div class="calendar-weekdays">
+      <div *ngFor="let day of weekDays">{{ day }}</div>
+    </div>
+    <div class="calendar-grid">
+      <button
+        *ngFor="let day of calendarDays"
+        [class.selected]="day && selectedDate.getDate() === day"
+        [class.disabled]="day === null"
+        (click)="day && selectDate(day)"
+        [disabled]="day === null"
+      >
+        {{ day }}
+      </button>
+    </div>
+  </div>
+
+  <div class="tracker-input-container">
+    <div class="selected-date">
+      <p>Selected: <strong>{{ selectedDate | date: 'MMMM d, yyyy' }}</strong></p>
+    </div>
+    <div class="single-day-input">
+      <label>Water Cups:</label>
+      <input
+        type="number"
+        [value]="days[getSelectedDayIndex()]?.count ?? 0"
+        (input)="setCount(getSelectedDayIndex(), $any($event.target).valueAsNumber)"
+        min="0"
+        [disabled]="!edit"
+        placeholder="0"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="saved" class="saved-note">✅ Saved</div>
+</div>

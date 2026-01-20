@@ -1,0 +1,51 @@
+:root{
+	--bg-start:#0f2027;
+	--bg-end:#2c5364;
+	--card:#ffffffcc;
+	--glass: rgba(255,255,255,0.06);
+	--accent:#7ad0ff;
+	--accent-2:#6be48a;
+	--muted:#dbe7ee;
+	--shadow: 0 10px 30px rgba(8,20,30,0.45);
+}
+
+*{box-sizing:border-box}
+body{
+	margin:0;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	min-height:100vh;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	background: linear-gradient(135deg,var(--bg-start),var(--bg-end));
+	color:var(--muted);
+}
+
+h1{margin:20px 0 6px 0;color:var(--muted);text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+
+.toolbar{
+	background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+	backdrop-filter: blur(6px);
+	padding:10px 14px;
+	border-radius:12px;
+	box-shadow:var(--shadow);
+	display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;
+	margin:14px 0;
+}
+
+
+.cursor-pencil{
+	cursor:url('../slike/pencil.png') 0 16, auto;
+}
+
+.cursor-eraser{
+	cursor:url('../slike/eraser.png') 0 16, auto;
+}
+
+.cursor-spray{
+	cursor:url('../slike/spray.png') 0 16, auto;
+}
+
+.cursor-marker{
+	cursor:url('../slike/marker.png') 0 16, auto;
+}
